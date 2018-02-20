@@ -28,6 +28,8 @@ class wazuh::server (
   $manage_repos                        = true,
   $manage_epel_repo                    = true,
   $manage_client_keys                  = 'export',
+  $manage_custom_client_keys           = false,
+  $custom_client_keys_file             = undef,
   $agent_auth_password                 = undef,
   $ar_repeated_offenders               = '',
   $syslog_output                       = false,
@@ -41,7 +43,8 @@ class wazuh::server (
 ) inherits wazuh::params {
   validate_bool(
     $ossec_active_response, $ossec_rootcheck,
-    $manage_repos, $manage_epel_repo, $syslog_output
+    $manage_repos, $manage_epel_repo, $syslog_output,
+    $manage_custom_client_keys
   )
   # This allows arrays of integers, sadly
   # (commented due to stdlib version requirement)
@@ -130,17 +133,26 @@ class wazuh::server (
       notify  => Service[$wazuh::params::server_service],
       require => Package[$wazuh::params::server_package],
     }
-    concat::fragment { 'var_ossec_etc_client.keys_end' :
-      target  => $wazuh::params::keys_file,
-      order   => 99,
-      content => "\n",
-      notify  => Service[$wazuh::params::server_service]
+
+    if $manage_custom_client_keys {
+      concat::fragment {
+         'var_ossec_etc_client.keys_top' :
+           target => $wazuh::params::keys_file,
+           order  => 00,
+           source => $custom_client_keys_file,
+           notify => Service[$wazuh::params::server_service];
+        }
+      }   
+    concat::fragment {
+      'var_ossec_etc_client.keys_end' :
+        target  => $wazuh::params::keys_file,
+        order   => 99,
+        content => "\n",
+        notify  => Service[$wazuh::params::server_service];
     }
     # A separate module to avoid storeconfigs warnings when not managing keys
     include wazuh::collect_agent_keys
   }
-
-
 
   if ( $manage_client_keys == 'authd') {
     # TODO: ensure the authd service is started if manage_client_keys == authd
