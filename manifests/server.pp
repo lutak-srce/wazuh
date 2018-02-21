@@ -11,7 +11,7 @@ class wazuh::server (
   $ossec_global_host_information_level = 8,
   $ossec_global_stat_level             = 8,
   $ossec_email_alert_level             = 7,
-  $ossec_log_alert_level               = 3,
+  $ossec_log_alert_level               = 2,
   $ossec_ignorepaths                   = [],
   $ossec_scanpaths                     = [ {'path' => '/etc,/usr/bin,/usr/sbin', 'report_changes' => 'no', 'realtime' => 'no'}, {'path' => '/bin,/sbin', 'report_changes' => 'yes', 'realtime' => 'yes'} ],
   $ossec_white_list                    = [],
