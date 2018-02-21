@@ -1,5 +1,5 @@
   <email_alerts>
-    <email_to><%= @alert_email %></email_to>
-    <% if @event_location != false -%><event_location><%= @event_location %></event_location><% end %>
-    <% if @alert_group != false -%><group><% @alert_group.each do |gr| -%><%= gr %>,<% end %></group><% end %>
-  </email_alerts>
+      <email_to><%= @alert_email %></email_to>
+      <% if @event_location != false -%><event_location><% @event_location.each do |gr| -%><%= gr %>|<% end %></event_location><% end %>
+      <% if @alert_group != false -%><group><% @alert_group.each do |gr| -%><%= gr %>,<% end %></group><% end %>
+    </email_alerts>
