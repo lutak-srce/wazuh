@@ -1,7 +1,8 @@
 # Define an email alert
 define wazuh::email_alert(
   $alert_email,
-  $alert_group = false
+  $alert_group = false, 
+  $event_location = false,
 ) {
   require wazuh::params
 
