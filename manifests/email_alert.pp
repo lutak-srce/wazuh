@@ -3,6 +3,8 @@ define wazuh::email_alert(
   $alert_email,
   $alert_group = false, 
   $event_location = false,
+  $do_not_delay = false,
+  $do_not_group = false,
 ) {
   require wazuh::params
 
