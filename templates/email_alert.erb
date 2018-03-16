@@ -1,6 +1,6 @@
   <email_alerts>
       <email_to><%= @alert_email %></email_to>
-      <% if @event_location != false -%><event_location><% @event_location.each do |gr| -%><%= gr %>|<% end %></event_location><% end %>
+      <% if @event_location != false -%><event_location><%= @event_location %></event_location><% end %>
       <% if @alert_group != false -%><group><% @alert_group.each do |gr| -%><%= gr %>,<% end %></group><% end %>
       <% if @do_not_delay != false -%><do_not_delay /><% end %>
       <% if @do_not_group != false -%><do_not_group /><% end %>
