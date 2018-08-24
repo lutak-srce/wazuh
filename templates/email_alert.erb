@@ -3,6 +3,9 @@
     <%- if @event_location -%>
     <event_location><%= [@event_location].flatten.compact.join('|') %></event_location>
     <%- end -%>
+    <%- if @rule_id -%>
+    <rule_id><%= [@rule_id].flatten.compact.join(',') %></rule_id>
+    <%- end -%>
     <%- if @alert_group -%>
     <group><%= [@alert_group].flatten.compact.join(',') %></group>
     <%- end -%>

@@ -5,6 +5,7 @@ define wazuh::email_alert(
   $event_location = false,
   $do_not_delay = false,
   $do_not_group = false,
+  $rule_id = false,
 ) {
   require wazuh::params
 
