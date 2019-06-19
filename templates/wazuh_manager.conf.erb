@@ -67,3 +67,31 @@
     <log_alert_level><%= @ossec_log_alert_level %></log_alert_level>
     <email_alert_level><%= @ossec_email_alert_level %></email_alert_level>
   </alerts>
+
+
+  <wodle name="vulnerability-detector">
+    <disabled>no</disabled>
+    <interval>24h</interval>
+    <run_on_start>no</run_on_start>
+    <feed name="debian-9">
+      <disabled>no</disabled>
+      <update_interval>12h</update_interval>
+    </feed>
+    <feed name="debian-8">
+      <disabled>no</disabled>
+      <update_interval>12h</update_interval>
+    </feed>
+    <feed name="debian-7">
+      <disabled>no</disabled>
+      <update_interval>12h</update_interval>
+    </feed>
+    <feed name="redhat-7">
+      <disabled>no</disabled>
+      <update_interval>12h</update_interval>
+    </feed>
+    <feed name="redhat-6">
+      <disabled>no</disabled>
+      <update_interval>12h</update_interval>
+    </feed>
+  </wodle>
+

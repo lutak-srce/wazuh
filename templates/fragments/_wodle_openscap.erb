@@ -1,8 +1,8 @@
   <wodle name="open-scap">
     <disabled>no</disabled>
     <timeout>1800</timeout>
-    <interval>1d</interval>
-    <scan-on-start>yes</scan-on-start>
+    <interval>30d</interval>
+    <scan-on-start>no</scan-on-start>
 
     <%- @wodle_openscap_content.each do |path, value| -%>
     <content type="<%= value['type'] %>" path="<%= path %>">
