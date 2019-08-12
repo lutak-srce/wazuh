@@ -60,12 +60,19 @@ class wazuh::params {
                   'type' => 'xccdf',
                   profiles => ['xccdf_org.ssgproject.content_profile_common'],
                 },
-                'cve-debian-oval.xml' => {
-                  'type' => 'oval',
-                }
               }
             }
-            /^(wheezy|stretch|sid|precise|trusty|vivid|wily|xenial)$/: {
+            'stretch': {
+              $server_service = 'wazuh-manager'
+              $server_package = 'wazuh-manager'
+              $wodle_openscap_content = {
+                'cve-debian-9-oval.xml' => {
+                  'type' => 'xccdf',
+                  profiles => ['xccdf_org.ssgproject.content_profile_common'],
+                },
+              }
+            }
+            /^(wheezy|sid|precise|trusty|vivid|wily|xenial)$/: {
               $server_service = 'wazuh-manager'
               $server_package = 'wazuh-manager'
               $wodle_openscap_content = undef
@@ -107,7 +114,7 @@ class wazuh::params {
                 $wodle_openscap_content = {
                   'ssg-centos-7-ds.xml' => {
                     'type' => 'xccdf',
-                    profiles => ['xccdf_org.ssgproject.content_profile_pci-dss', 'xccdf_org.ssgproject.content_profile_server',]
+                    profiles => ['xccdf_org.ssgproject.content_profile_pci-dss', 'xccdf_org.ssgproject.content_profile_standard',]
                 }
               }
               }
