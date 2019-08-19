@@ -72,7 +72,7 @@ class wazuh::params {
                 },
               }
             }
-            /^(wheezy|sid|precise|trusty|vivid|wily|xenial)$/: {
+            /^(buster|wheezy|sid|precise|trusty|vivid|wily|xenial)$/: {
               $server_service = 'wazuh-manager'
               $server_package = 'wazuh-manager'
               $wodle_openscap_content = undef
