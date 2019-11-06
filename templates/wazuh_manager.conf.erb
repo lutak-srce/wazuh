@@ -22,7 +22,11 @@
     <%- @ossec_white_list.each do |ipaddress| -%><white_list><%= ipaddress %></white_list>
     <%- end -%>
   </global>
-  
+ 
+  <auth>
+    <disabled>yes</disabled>
+  </auth>
+ 
 <%- if @syslog_output -%>
   <syslog_output>
     <server><%= @syslog_output_server %></server>
