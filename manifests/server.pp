@@ -153,7 +153,7 @@ class wazuh::server (
       'var_ossec_etc_client.keys_end' :
         target  => $wazuh::params::keys_file,
         order   => 99,
-        content => "\n",
+        content => "",
         notify  => Service[$wazuh::params::server_service];
     }
     # A separate module to avoid storeconfigs warnings when not managing keys
