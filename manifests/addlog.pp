@@ -3,6 +3,7 @@ define wazuh::addlog(
   $logfile,
   $logtype   = 'syslog',
   $frequency = undef,
+  $exclude   = undef,
 ) {
   require wazuh::params
 
