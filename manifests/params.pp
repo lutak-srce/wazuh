@@ -118,6 +118,9 @@ class wazuh::params {
                 }
               }
               }
+              if ( $::operatingsystemrelease =~ /^8.*/ ) {
+                $wodle_openscap_content = undef
+              }
             }
             'Redhat': {
               if ( $::operatingsystemrelease =~ /^6.*/ ) {
@@ -141,6 +144,9 @@ class wazuh::params {
                 'type' => 'xccdf',
                   }
               }
+              }
+              if ( $::operatingsystemrelease =~ /^8.*/ ) {
+                $wodle_openscap_content = undef
               }
             }
             'Fedora': {
